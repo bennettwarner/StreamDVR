@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  nav(aria-label='breadcrumb')
+  ol.breadcrumb
+    li.breadcrumb-item
+      a(href='/') Streams
+    li.breadcrumb-item
+      a(href='../../streams/'+stream) #{stream}
+    li.breadcrumb-item.active(aria-current='page') #{stream}-live
+  h2 Live Broadcast
+  br
+  center
+    #player
+    br
+  script.
+    var player = new Clappr.Player({source: "#{playback_url}", parentId: "#player"});

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  nav(aria-label='breadcrumb')
+  ol.breadcrumb
+    li.breadcrumb-item
+      a(href='/') Streams
+    li.breadcrumb-item
+      a(href='../../streams/'+stream) #{stream}
+    li.breadcrumb-item.active(aria-current='page') #{video}
+  h2= title
+  br
+  center
+    #player
+    hr
+    br
+    a.btn.btn-success(href=video_path download)
+      i.fas.fa-download
+      |  Download
+    |  
+    a.btn.btn-danger(href='./delete/'+video, onclick="return confirm('Are you sure you want to delete the video?')") 
+      i.fas.fa-times
+      |  Delete
+  script.
+    var player = new Clappr.Player({source: "#{video_path}", parentId: "#player"});

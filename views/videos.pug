@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  nav(aria-label='breadcrumb')
+  ol.breadcrumb
+    li.breadcrumb-item
+      a(href='/') Streams
+    li.breadcrumb-item.active(aria-current='page') #{stream}
+  h2 Recordings
+  br
+  ul.list-group
+    each video, i in videos
+      li.list-group-item
+        h6
+          a(href="/video/"+video.streamkey+'/'+video.name)
+            i.fas.fa-film
+            |   #{video.name}  -  #{video.streamkey}
+  br
+  if live == true
+    hr
+    br
+    h2 Broadcasts
+    br
+    ul.list-group
+      li.list-group-item
+        h6
+          a(href="/live/"+video.streamkey)
+            i.fas.fa-broadcast-tower
+            |   LIVE BROADCAST
+

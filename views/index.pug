@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h2 Streams
+  br
+  ul.list-group
+    each key, i in streams
+      li.list-group-item
+        h6
+          a(href="/streams/"+ key[0])
+            if key[1] == true
+              i.fas.fa-broadcast-tower(style="color: red")
+            |  #{key[0]}
+  br
+  hr
+  h2 Disk Space Usage
+  br
+  div(style=' margin: 0 auto; width: 80%')
+    p(style='text-align: right;') #{disk_used} / #{disk_total}
+  center
+    div(style='width: 80%')
+      .progress(style='height: 30px')
+        .progress-bar(class=state role='progressbar', style='width: '+disk+'%', aria-valuenow=disk, aria-valuemin='0', aria-valuemax='100') #{disk}% of storage used.
+
